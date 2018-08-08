@@ -47,7 +47,7 @@ public final class Constraint {
         }
     }
     public var layoutConstraints: [LayoutConstraint]
-    
+
     public var isActive: Bool {
         for layoutConstraint in self.layoutConstraints {
             if layoutConstraint.isActive {
@@ -56,7 +56,7 @@ public final class Constraint {
         }
         return false
     }
-    
+
     // MARK: Initialization
 
     internal init(from: ConstraintItem,
@@ -166,7 +166,7 @@ public final class Constraint {
             layoutConstraint.label = self.label
 
             // set priority
-            layoutConstraint.priority = self.priority.constraintPriorityTargetValue
+            layoutConstraint.priority = UILayoutPriority(self.priority.constraintPriorityTargetValue)
 
             // set constraint
             layoutConstraint.constraint = self
@@ -244,7 +244,7 @@ public final class Constraint {
 
             let requiredPriority = ConstraintPriority.required.value
             if (layoutConstraint.priority < requiredPriority), (self.priority.constraintPriorityTargetValue != requiredPriority) {
-                layoutConstraint.priority = self.priority.constraintPriorityTargetValue
+                layoutConstraint.priority = UILayoutPriority(self.priority.constraintPriorityTargetValue)
             }
         }
     }
